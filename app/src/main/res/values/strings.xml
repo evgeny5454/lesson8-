@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Lesson 8</string>
+    <string name="notes_title">Заметки</string>
+    <string name="action_add">Добавить</string>
+    <string name="action_open">"Открыть "</string>
+    <string name="action_update">Обновить</string>
+    <string name="action_delete">Удалить</string>
+    <string name="edit_title">Редактирование</string>
+    <string name="hint_note_title">Название заметки</string>
 </resources>

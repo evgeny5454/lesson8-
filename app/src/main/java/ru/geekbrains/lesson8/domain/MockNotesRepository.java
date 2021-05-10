@@ -2,6 +2,7 @@ package ru.geekbrains.lesson8.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Этот класс должен реализовывать NotesRepository
@@ -10,8 +11,18 @@ import java.util.List;
  * если у нас в дальнейшем появится репозиторий мы просто реализуем NotesRepository
  */
 public class MockNotesRepository implements NotesRepository {
+
+    private ArrayList<Note> data = new ArrayList<>(); // храним заметки тут
+
     @Override
     public List<Note> getNotes() {
+        return new ArrayList<>(data); // возвращаем список заметок, возвращаем эрей лист что бы была копия
+
+
+    }
+
+    @Override
+    public Note addNote() {
         ArrayList<Note> notes = new ArrayList<>();
         notes.add(new Note("1","Заметка 1","Содержание 1 заметки"));
         notes.add(new Note("2","Заметка 2","Содержание 2 заметки"));
@@ -24,6 +35,14 @@ public class MockNotesRepository implements NotesRepository {
         notes.add(new Note("9","Заметка 9","Содержание 9 заметки"));
         notes.add(new Note("10","Заметка 10","Содержание 10 заметки"));
 
-        return notes; //возвращаем массив заметок
+        Note added = notes.get(new Random().nextInt(notes.size() -1)); //возвращаем рандомную заметку
+        data.add(added);// добавляем рандомную заметку
+        return added;//выкидываем наружу
+
+    }
+
+    @Override
+    public void removeAtPosition(int longClickedPosition) {
+        data.remove(longClickedPosition);
     }
 }
